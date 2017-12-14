@@ -226,7 +226,11 @@ class ViewController: NSViewController {
             showMessage(message: "查询中.....\(index)/\(files.count)")
         }
         try? keys.write(toFile: allKeyFilePath, atomically: true, encoding: String.Encoding.utf8)
-        try? removeExistKeys.write(toFile: removedExistKeyFilePath, atomically: true, encoding: String.Encoding.utf8)
+        DispatchQueue.main.sync {
+            if removeAllFileExistKeyButton.state == .on || removeOneFileExistKeyButton.state == .on {
+                try? removeExistKeys.write(toFile: removedExistKeyFilePath, atomically: true, encoding: String.Encoding.utf8)
+            }
+        }
         showMessage(message:"查询完成\n" + "共查询了--\(files.count)个file---\(keyCount)个key" + "\n" + "文件路径: \(filePath(fileName: ""))")
     }
     
