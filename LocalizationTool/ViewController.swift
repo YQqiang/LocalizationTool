@@ -14,6 +14,10 @@ class ViewController: NSViewController {
         return filePath(fileName: "allKeys.txt")
     }
     
+    var removedExistKeyFilePath: String {
+        return filePath(fileName: "removedExistKey.txt")
+    }
+    
     var i18nKeyFilePath: String {
         return filePath(fileName: "i18nKeys.txt")
     }
@@ -24,12 +28,19 @@ class ViewController: NSViewController {
     @IBOutlet weak var exportTextField: NSTextField!
     @IBOutlet weak var sourceFileButton: NSButton!
     @IBOutlet weak var sourceFileTextField: NSTextField!
+    @IBOutlet weak var stringsFileTextField: NSTextField!
     
+    @IBOutlet weak var removeAllFileExistKeyButton: NSButton!
+    @IBOutlet weak var removeOneFileExistKeyButton: NSButton!
+    @IBOutlet weak var oneFileStringsView: NSView!
     @IBOutlet weak var showMessageLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        /// 默认选中 剔除所有strings文件中重复key
+        removeAllFileExistKeyButton.state = .on
+        removeAllFileExistKey(removeAllFileExistKeyButton)
         showMessage(message: "请先选择导入路径和导出路径, 然后点击确认导出")
     }
 
@@ -37,6 +48,20 @@ class ViewController: NSViewController {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    @IBAction func removeAllFileExistKey(_ sender: NSButton) {
+        if sender.state == .on {
+            removeOneFileExistKeyButton.state = .off
+            removeOneFileExistKey(removeOneFileExistKeyButton)
+        }
+    }
+    
+    @IBAction func removeOneFileExistKey(_ sender: NSButton) {
+        if sender.state == .on {
+            removeAllFileExistKeyButton.state = .off
+        }
+        oneFileStringsView.isHidden = !(sender.state == .on)
     }
     
     @IBAction func importButtonAction(_ sender: NSButton) {
@@ -55,6 +80,9 @@ class ViewController: NSViewController {
         sourceFileTextField.placeholderString = openPanel(canChooseFile: true)
     }
     
+    @IBAction func stringsFileButtonAction(_ sender: NSButton) {
+        stringsFileTextField.placeholderString = openPanel(canChooseFile: true)
+    }
     fileprivate func openPanel(canChooseFile: Bool) -> String {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -81,6 +109,13 @@ class ViewController: NSViewController {
             return
         }
         
+        if removeOneFileExistKeyButton.state == .on {
+            if stringsFileTextField.placeholderString == nil || stringsFileTextField.placeholderString?.count == 0 {
+                showMessage(message: "请选择strings文件路径")
+                return
+            }
+        }
+        
         showMessage(message: "开始导出...")
         let path = importTextField.placeholderString!
         
@@ -101,6 +136,11 @@ class ViewController: NSViewController {
         /// 统计文件个数
         var files = [String]()
         var localizableFiles = [String]()
+        DispatchQueue.main.sync {
+            if self.removeOneFileExistKeyButton.state == .on {
+                localizableFiles.append(stringsFileTextField.placeholderString!)
+            }
+        }
         var fileName: String? = (directoryEnumerator?.nextObject() as! String?)
         let fileExtensions: [String] = ["h", "m", "swift"]
         while (fileName != nil) {
@@ -108,9 +148,10 @@ class ViewController: NSViewController {
                 if fileExtensions.contains(fileExtension) {
                     files.append(fileName!)
                 }
-                
-                if fileExtension == "strings" {
-                    localizableFiles.append(fileName!)
+                DispatchQueue.main.sync {
+                    if removeAllFileExistKeyButton.state == .on && fileExtension == "strings" {
+                        localizableFiles.append(fileName!)
+                    }
                 }
             }
             fileName = (directoryEnumerator?.nextObject() as! String?)
@@ -118,9 +159,13 @@ class ViewController: NSViewController {
         print("--------\(files.count) ------- \(localizableFiles.count)")
         showMessage(message: "共\(files.count)个文件需要查询")
         
-        ///
+        /// 存储所有的key
         var keyCount = 0
         var keys = ""
+        
+        /// 存储剔除已有key后的key
+        var removeExistKeys = ""
+        
         for (index, file) in files.enumerated() {
             let fileStr = try? String.init(contentsOfFile: homePath + "/" + file, encoding: String.Encoding.utf8)
             guard let fileContent = fileStr else {
@@ -135,17 +180,53 @@ class ViewController: NSViewController {
             guard let checkResults = matches else {
                 continue
             }
-            if checkResults.count > 0 {
-                keys = keys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
-            }
+            
+            /// 所有key的文件是否加了文件名称
+            var keysAddedFileName = false
+            /// 剔除key的文件是否加了文件名称
+            var removeExistKeysAddedFileName = false
             for checkResult in checkResults {
                 let key = (fileContent as NSString).substring(with: checkResult.range)
+                var canAddKey = true
+                for localizableFile in localizableFiles {
+                    var localizableFileStr = try? String.init(contentsOfFile: homePath + "/" + localizableFile, encoding: String.Encoding.utf8)
+                    DispatchQueue.main.sync {
+                        if removeOneFileExistKeyButton.state == .on {
+                            localizableFileStr = try? String.init(contentsOfFile: localizableFile, encoding: String.Encoding.utf8)
+                        }
+                    }
+                    if let localizableFileContent = localizableFileStr {
+                        let localizableRegular = try? NSRegularExpression(pattern: "\"+[^\"]+[^\"\\n]*?\" =", options: .caseInsensitive)
+                        let localizableMatches = localizableRegular?.matches(in: localizableFileContent, options: .reportProgress, range: NSRange.init(location: 0, length: localizableFileContent.count))
+                        if let localizableCheckResults = localizableMatches {
+                            for localizableCheckResult in localizableCheckResults {
+                                let localizableKey = (localizableFileContent as NSString).substring(with: localizableCheckResult.range).replacingOccurrences(of: " =", with: "")
+                                if "\"" + key + "\"" == localizableKey {
+                                    canAddKey = false
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if canAddKey {
+                    if !removeExistKeysAddedFileName {
+                        removeExistKeysAddedFileName = true
+                        removeExistKeys = removeExistKeys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                    }
+                    removeExistKeys = removeExistKeys + "\"" +  key + "\" = \"\";" + "\n"
+                }
+                if !keysAddedFileName {
+                    keysAddedFileName = true
+                    keys = keys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                }
                 keys = keys + "\"" +  key + "\" = \"\";" + "\n"
                 keyCount += 1
             }
             showMessage(message: "查询中.....\(index)/\(files.count)")
         }
         try? keys.write(toFile: allKeyFilePath, atomically: true, encoding: String.Encoding.utf8)
+        try? removeExistKeys.write(toFile: removedExistKeyFilePath, atomically: true, encoding: String.Encoding.utf8)
         showMessage(message:"查询完成\n" + "共查询了--\(files.count)个file---\(keyCount)个key" + "\n" + "文件路径: \(filePath(fileName: ""))")
     }
     
