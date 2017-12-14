@@ -34,6 +34,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var removeOneFileExistKeyButton: NSButton!
     @IBOutlet weak var oneFileStringsView: NSView!
     @IBOutlet weak var showMessageLabel: NSTextField!
+    @IBOutlet weak var customRegularTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,6 +177,20 @@ class ViewController: NSViewController {
             if isSwift {
                 regular = try? NSRegularExpression(pattern: "(?<=NSLocalizedString\\(\").*?(?=\",)", options: .caseInsensitive)
             }
+            
+            /// 自定义匹配规则
+            var customRegular = ""
+            DispatchQueue.main.sync {
+                customRegular = customRegularTextField.stringValue
+            }
+            if customRegular.count > 0  {
+                regular = try? NSRegularExpression(pattern: customRegular, options: .caseInsensitive)
+                if regular == nil {
+                    showMessage(message: "匹配规则错误, 请修正")
+                    return
+                }
+            }
+            
             let matches = regular?.matches(in: fileContent, options: .reportProgress, range: NSRange.init(location: 0, length: fileContent.count))
             guard let checkResults = matches else {
                 continue

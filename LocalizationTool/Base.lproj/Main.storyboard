@@ -709,14 +709,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LocalizationTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="532" height="438"/>
+                        <rect key="frame" x="0.0" y="0.0" width="632" height="438"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCe-F6-kJL">
-                                <rect key="frame" x="16" y="70" width="500" height="352"/>
+                                <rect key="frame" x="16" y="70" width="600" height="352"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="f5e-nO-pC0">
-                                        <rect key="frame" x="0.0" y="308" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVp-a9-gTF">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -727,7 +727,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BLO-2R-9yx">
-                                                <rect key="frame" x="65" y="10" width="372" height="22"/>
+                                                <rect key="frame" x="65" y="10" width="472" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="dZ9-I0-XXk">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -735,7 +735,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MS0-I9-EL9">
-                                                <rect key="frame" x="439" y="4" width="67" height="32"/>
+                                                <rect key="frame" x="539" y="4" width="67" height="32"/>
                                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VWn-09-uhP">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -757,7 +757,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Jz-G7q">
-                                        <rect key="frame" x="0.0" y="264" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="264" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Dy-sB-lFs">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -768,7 +768,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QGG-Cv-MMY">
-                                                <rect key="frame" x="65" y="10" width="372" height="22"/>
+                                                <rect key="frame" x="65" y="10" width="472" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="u6g-PD-CNV">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -776,7 +776,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pmX-tn-Auu">
-                                                <rect key="frame" x="439" y="4" width="67" height="32"/>
+                                                <rect key="frame" x="539" y="4" width="67" height="32"/>
                                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dGp-II-0d4">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -798,10 +798,10 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="KVD-H2-dh0">
-                                        <rect key="frame" x="0.0" y="220" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pug-aN-glN">
-                                                <rect key="frame" x="264" y="13" width="206" height="18"/>
+                                                <rect key="frame" x="314" y="13" width="206" height="18"/>
                                                 <buttonCell key="cell" type="check" title="剔除指定strings文件中重复key" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8HJ-jm-Bzh">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -811,7 +811,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9f-ZE-LD1">
-                                                <rect key="frame" x="-10" y="13" width="246" height="18"/>
+                                                <rect key="frame" x="40" y="13" width="246" height="18"/>
                                                 <buttonCell key="cell" type="check" title="剔除项目中所有strings文件中重复key" bezelStyle="regularSquare" imagePosition="left" inset="2" id="2yI-yi-I1d">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -830,7 +830,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sKb-I1-Int">
-                                        <rect key="frame" x="0.0" y="176" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-kU-Y7I">
                                                 <rect key="frame" x="-2" y="5" width="65" height="34"/>
@@ -843,7 +843,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-lw-54J">
-                                                <rect key="frame" x="69" y="11" width="368" height="22"/>
+                                                <rect key="frame" x="69" y="11" width="468" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="prg-6w-KVD">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -851,7 +851,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BLP-mX-jS1">
-                                                <rect key="frame" x="439" y="5" width="67" height="32"/>
+                                                <rect key="frame" x="539" y="5" width="67" height="32"/>
                                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fbw-VE-h2F">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -873,7 +873,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="qrf-nX-8aL">
-                                        <rect key="frame" x="0.0" y="132" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvW-fd-Ln8">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -884,7 +884,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bsc-za-sV7">
-                                                <rect key="frame" x="65" y="10" width="372" height="22"/>
+                                                <rect key="frame" x="65" y="10" width="472" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="hzy-Le-IpR">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -892,7 +892,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PR3-lz-dB7">
-                                                <rect key="frame" x="439" y="4" width="67" height="32"/>
+                                                <rect key="frame" x="539" y="4" width="67" height="32"/>
                                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="66I-Lc-AMo">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -914,13 +914,13 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="tjh-bA-NOs">
-                                        <rect key="frame" x="0.0" y="88" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="j5H-gw-ISB"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="2lV-iX-d0i">
-                                        <rect key="frame" x="0.0" y="44" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTQ-uN-lhr">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -931,7 +931,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRA-GU-jdq">
-                                                <rect key="frame" x="65" y="10" width="372" height="22"/>
+                                                <rect key="frame" x="65" y="10" width="472" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="TjQ-ko-QxG">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -939,7 +939,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="veO-3p-fv9">
-                                                <rect key="frame" x="439" y="4" width="67" height="32"/>
+                                                <rect key="frame" x="539" y="4" width="67" height="32"/>
                                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uKH-wA-JJJ">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -958,10 +958,10 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="lPd-Nj-Khe">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fs2-IW-Yf3">
-                                                <rect key="frame" x="144" y="4" width="212" height="32"/>
+                                                <rect key="frame" x="194" y="4" width="212" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Wcs-CJ-KvR"/>
                                                 </constraints>
@@ -982,7 +982,7 @@
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="tp2-gb-usg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="tp2-gb-usg"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -1006,7 +1006,7 @@
                                 </customSpacing>
                             </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rhe-zx-LxF">
-                                <rect key="frame" x="225" y="24" width="81" height="22"/>
+                                <rect key="frame" x="275" y="24" width="81" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="message" id="x7p-vC-86h">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1024,6 +1024,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="customRegularTextField" destination="VRA-GU-jdq" id="zUV-k2-n8J"/>
                         <outlet property="exportButton" destination="pmX-tn-Auu" id="kRu-sx-eK6"/>
                         <outlet property="exportTextField" destination="QGG-Cv-MMY" id="Dm8-fp-1cN"/>
                         <outlet property="importButton" destination="MS0-I9-EL9" id="AWU-rm-awW"/>
