@@ -709,14 +709,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LocalizationTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="632" height="438"/>
+                        <rect key="frame" x="0.0" y="0.0" width="632" height="482"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCe-F6-kJL">
-                                <rect key="frame" x="16" y="70" width="600" height="352"/>
+                                <rect key="frame" x="16" y="70" width="600" height="396"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="f5e-nO-pC0">
-                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVp-a9-gTF">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -756,8 +756,66 @@
                                             <constraint firstItem="BLO-2R-9yx" firstAttribute="leading" secondItem="bVp-a9-gTF" secondAttribute="trailing" constant="8" id="yq8-Nl-Wem"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Jz-G7q">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tjh-bA-NOs">
+                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-d9-pgM">
+                                                <rect key="frame" x="125.5" y="13" width="349" height="18"/>
+                                                <buttonCell key="cell" type="check" title="补充需要扫描的文件后缀名, 多种后缀名使用逗号分隔开" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0bt-EH-0C9">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="addFileExtensionNameButtonAction:" target="XfG-lQ-9wD" id="5Ei-eQ-ISs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="j5H-gw-ISB"/>
+                                            <constraint firstAttribute="centerX" secondItem="uZq-d9-pgM" secondAttribute="centerX" id="uNh-eZ-5NO"/>
+                                            <constraint firstItem="uZq-d9-pgM" firstAttribute="centerY" secondItem="tjh-bA-NOs" secondAttribute="centerY" id="wIX-Jq-ZwI"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="aeg-Sh-tgp">
                                         <rect key="frame" x="0.0" y="264" width="600" height="44"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3PX-3T-Z4G">
+                                                <rect key="frame" x="-2" y="13" width="61" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="文件后缀:" id="Y66-C4-apq">
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-3t-hPn">
+                                                <rect key="frame" x="65" y="10" width="472" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="NMB-Zc-svi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="txo-4o-y2q">
+                                                <rect key="frame" x="539" y="4" width="67" height="32"/>
+                                                <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jju-xV-rIC">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="9Xs-3t-hPn" firstAttribute="centerY" secondItem="3PX-3T-Z4G" secondAttribute="centerY" id="Bl7-tA-Awh"/>
+                                            <constraint firstItem="3PX-3T-Z4G" firstAttribute="centerY" secondItem="aeg-Sh-tgp" secondAttribute="centerY" id="PFp-Gl-RTC"/>
+                                            <constraint firstAttribute="height" constant="44" id="Wai-FN-huN"/>
+                                            <constraint firstAttribute="trailing" secondItem="txo-4o-y2q" secondAttribute="trailing" id="boj-VW-Y0x"/>
+                                            <constraint firstItem="txo-4o-y2q" firstAttribute="centerY" secondItem="9Xs-3t-hPn" secondAttribute="centerY" id="gxT-nB-8aD"/>
+                                            <constraint firstItem="9Xs-3t-hPn" firstAttribute="leading" secondItem="3PX-3T-Z4G" secondAttribute="trailing" constant="8" id="tZJ-lG-uVJ"/>
+                                            <constraint firstItem="txo-4o-y2q" firstAttribute="leading" secondItem="9Xs-3t-hPn" secondAttribute="trailing" constant="8" id="vCR-2b-W0Y"/>
+                                            <constraint firstItem="3PX-3T-Z4G" firstAttribute="leading" secondItem="aeg-Sh-tgp" secondAttribute="leading" id="vfq-nj-r6g"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Jz-G7q">
+                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Dy-sB-lFs">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -798,7 +856,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="KVD-H2-dh0">
-                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pug-aN-glN">
                                                 <rect key="frame" x="314" y="13" width="206" height="18"/>
@@ -830,7 +888,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sKb-I1-Int">
-                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-kU-Y7I">
                                                 <rect key="frame" x="-2" y="5" width="65" height="34"/>
@@ -873,7 +931,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="qrf-nX-8aL">
-                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvW-fd-Ln8">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -911,12 +969,6 @@
                                             <constraint firstItem="Bsc-za-sV7" firstAttribute="leading" secondItem="jvW-fd-Ln8" secondAttribute="trailing" constant="8" id="rcp-kw-T9n"/>
                                             <constraint firstItem="jvW-fd-Ln8" firstAttribute="leading" secondItem="qrf-nX-8aL" secondAttribute="leading" id="v1z-nr-9fI"/>
                                             <constraint firstItem="Bsc-za-sV7" firstAttribute="centerY" secondItem="jvW-fd-Ln8" secondAttribute="centerY" id="vUr-P5-qnY"/>
-                                        </constraints>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tjh-bA-NOs">
-                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="j5H-gw-ISB"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="2lV-iX-d0i">
@@ -993,8 +1045,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -1024,6 +1078,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addFileExtensionNameButton" destination="uZq-d9-pgM" id="UaJ-CK-dK9"/>
+                        <outlet property="addFileExtensionNameTextField" destination="9Xs-3t-hPn" id="RVF-HC-i1r"/>
+                        <outlet property="addFileExtensionNameView" destination="aeg-Sh-tgp" id="oZx-z8-pBg"/>
                         <outlet property="customRegularTextField" destination="VRA-GU-jdq" id="zUV-k2-n8J"/>
                         <outlet property="exportButton" destination="pmX-tn-Auu" id="kRu-sx-eK6"/>
                         <outlet property="exportTextField" destination="QGG-Cv-MMY" id="Dm8-fp-1cN"/>

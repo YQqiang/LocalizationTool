@@ -30,6 +30,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var sourceFileTextField: NSTextField!
     @IBOutlet weak var stringsFileTextField: NSTextField!
     
+    /// MARK - 补充需要扫描的文件后缀名
+    @IBOutlet weak var addFileExtensionNameButton: NSButton!
+    @IBOutlet weak var addFileExtensionNameView: NSView!
+    @IBOutlet weak var addFileExtensionNameTextField: NSTextField!
+    
     @IBOutlet weak var removeAllFileExistKeyButton: NSButton!
     @IBOutlet weak var removeOneFileExistKeyButton: NSButton!
     @IBOutlet weak var oneFileStringsView: NSView!
@@ -43,6 +48,10 @@ class ViewController: NSViewController {
         removeAllFileExistKeyButton.state = .on
         removeAllFileExistKey(removeAllFileExistKeyButton)
         showMessage(message: "请先选择导入路径和导出路径, 然后点击确认导出")
+        
+        /// 默认不补充文件扩展名
+        addFileExtensionNameButton.state = .off
+        addFileExtensionNameButtonAction(addFileExtensionNameButton)
     }
 
     override var representedObject: Any? {
@@ -63,6 +72,9 @@ class ViewController: NSViewController {
             removeAllFileExistKeyButton.state = .off
         }
         oneFileStringsView.isHidden = !(sender.state == .on)
+    }
+    @IBAction func addFileExtensionNameButtonAction(_ sender: NSButton) {
+        addFileExtensionNameView.isHidden = !(sender.state == .on)
     }
     
     @IBAction func importButtonAction(_ sender: NSButton) {
@@ -143,7 +155,26 @@ class ViewController: NSViewController {
             }
         }
         var fileName: String? = (directoryEnumerator?.nextObject() as! String?)
-        let fileExtensions: [String] = ["h", "m", "swift"]
+        var fileExtensions: [String] = ["h", "m", "swift"]
+        if Thread.current.isMainThread {
+            if let addFileExtensions = addFileExtensionNameTextField.placeholderString?.replacingOccurrences(of: " ", with: "").components(separatedBy: ",") {
+                addFileExtensions.forEach({ (addFileExtension) in
+                    if !fileExtensions.contains(addFileExtension) {
+                        fileExtensions.append(addFileExtension)
+                    }
+                })
+            }
+        } else {
+            DispatchQueue.main.sync {
+                let addFileExtensions = addFileExtensionNameTextField.stringValue.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")
+                addFileExtensions.forEach({ (addFileExtension) in
+                    if !fileExtensions.contains(addFileExtension) {
+                        fileExtensions.append(addFileExtension)
+                    }
+                })
+            }
+        }
+        
         while (fileName != nil) {
             if let fileExtension = (fileName as NSString?)?.pathExtension {
                 if fileExtensions.contains(fileExtension) {
@@ -218,6 +249,7 @@ class ViewController: NSViewController {
                                 let localizableKey = (localizableFileContent as NSString).substring(with: localizableCheckResult.range).replacingOccurrences(of: " =", with: "")
                                 if "\"" + key + "\"" == localizableKey {
                                     canAddKey = false
+                                    break
                                 }
                             }
                         }
@@ -264,8 +296,12 @@ class ViewController: NSViewController {
     /// - Returns: 文件路径
     fileprivate func filePath(fileName: String) -> String {
         var exportPath = ""
-        DispatchQueue.main.sync {
+        if Thread.current.isMainThread {
             exportPath = self.exportTextField.placeholderString!
+        } else {
+            DispatchQueue.main.sync {
+                exportPath = self.exportTextField.placeholderString!
+            }
         }
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: exportPath) {
