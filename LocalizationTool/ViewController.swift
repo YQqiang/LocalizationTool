@@ -194,6 +194,8 @@ class ViewController: NSViewController {
         /// 存储所有的key
         var keyCount = 0
         var keys = ""
+        var allKeysArray = [String]()
+        var removedExistKeysArray = [String]()
         
         /// 存储剔除已有key后的key
         var removeExistKeys = ""
@@ -242,12 +244,12 @@ class ViewController: NSViewController {
                         }
                     }
                     if let localizableFileContent = localizableFileStr {
-                        let localizableRegular = try? NSRegularExpression(pattern: "\"+[^\"]+[^\"\\n]*?\" =", options: .caseInsensitive)
+                        let localizableRegular = try? NSRegularExpression(pattern: "(?<=\").*?(?=\" =)", options: .caseInsensitive)
                         let localizableMatches = localizableRegular?.matches(in: localizableFileContent, options: .reportProgress, range: NSRange.init(location: 0, length: localizableFileContent.count))
                         if let localizableCheckResults = localizableMatches {
                             for localizableCheckResult in localizableCheckResults {
-                                let localizableKey = (localizableFileContent as NSString).substring(with: localizableCheckResult.range).replacingOccurrences(of: " =", with: "")
-                                if "\"" + key + "\"" == localizableKey {
+                                let localizableKey = (localizableFileContent as NSString).substring(with: localizableCheckResult.range)
+                                if key == localizableKey {
                                     canAddKey = false
                                     break
                                 }
@@ -257,18 +259,24 @@ class ViewController: NSViewController {
                 }
                 
                 if canAddKey {
-                    if !removeExistKeysAddedFileName {
-                        removeExistKeysAddedFileName = true
-                        removeExistKeys = removeExistKeys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                    if !removedExistKeysArray.contains(key) {
+                        if !removeExistKeysAddedFileName {
+                            removeExistKeysAddedFileName = true
+                            removeExistKeys = removeExistKeys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                        }
+                        removeExistKeys = removeExistKeys + "\"" +  key + "\" = \"\";" + "\n"
+                        removedExistKeysArray.append(key)
                     }
-                    removeExistKeys = removeExistKeys + "\"" +  key + "\" = \"\";" + "\n"
                 }
-                if !keysAddedFileName {
-                    keysAddedFileName = true
-                    keys = keys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                if !allKeysArray.contains(key) {
+                    if !keysAddedFileName {
+                        keysAddedFileName = true
+                        keys = keys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
+                    }
+                    keys = keys + "\"" +  key + "\" = \"\";" + "\n"
+                    keyCount += 1
+                    allKeysArray.append(key)
                 }
-                keys = keys + "\"" +  key + "\" = \"\";" + "\n"
-                keyCount += 1
             }
             showMessage(message: "查询中.....\(index)/\(files.count)")
         }
