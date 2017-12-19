@@ -30,6 +30,21 @@ class ViewController: NSViewController {
     @IBOutlet weak var sourceFileTextField: NSTextField!
     @IBOutlet weak var stringsFileTextField: NSTextField!
     
+    /// MARK - 自定义匹配规则
+    @IBOutlet weak var defaultRegularButton: NSButton!
+    @IBOutlet weak var customRegularButton: NSButton!
+    @IBOutlet weak var prefixAndSuffixRegularButton: NSButton!
+    
+    @IBOutlet weak var prefixAndSuffixView: NSView!
+    @IBOutlet weak var prefixTextField: NSTextField!
+    @IBOutlet weak var suffixTextField: NSTextField!
+    
+    @IBOutlet weak var customRegularView: NSView!
+    @IBOutlet weak var customRegularTextField: NSTextField!
+    
+    /// MARK - 资源文件
+    @IBOutlet weak var sourceFileView: NSView!
+    
     /// MARK - 补充需要扫描的文件后缀名
     @IBOutlet weak var addFileExtensionNameButton: NSButton!
     @IBOutlet weak var addFileExtensionNameView: NSView!
@@ -39,7 +54,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var removeOneFileExistKeyButton: NSButton!
     @IBOutlet weak var oneFileStringsView: NSView!
     @IBOutlet weak var showMessageLabel: NSTextField!
-    @IBOutlet weak var customRegularTextField: NSTextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +67,48 @@ class ViewController: NSViewController {
         /// 默认不补充文件扩展名
         addFileExtensionNameButton.state = .off
         addFileExtensionNameButtonAction(addFileExtensionNameButton)
+        
+        /// 默认使用默认的匹配规则
+        defaultRegularButton.state = .on
+        defaultRegularButtonAction(defaultRegularButton)
+        
+        /// 隐藏资源文件选框
+        sourceFileView.isHidden = true
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
+        }
+    }
+    
+    @IBAction func defaultRegularButtonAction(_ sender: NSButton) {
+        if sender.state == .on {
+            customRegularButton.state = .off
+            prefixAndSuffixRegularButton.state = .off
+            
+            customRegularView.isHidden = true
+            prefixAndSuffixView.isHidden = true
+        }
+    }
+    
+    @IBAction func customRegularButtonAction(_ sender: NSButton) {
+        if sender.state == .on {
+            defaultRegularButton.state = .off
+            prefixAndSuffixRegularButton.state = .off
+            
+            customRegularView.isHidden = false
+            prefixAndSuffixView.isHidden = true
+        }
+    }
+    
+    @IBAction func prefixAndSuffixRegularAction(_ sender: NSButton) {
+        if sender.state == .on {
+            defaultRegularButton.state = .off
+            customRegularButton.state = .off
+            
+            customRegularView.isHidden = true
+            prefixAndSuffixView.isHidden = false
         }
     }
     
@@ -115,6 +167,25 @@ class ViewController: NSViewController {
         if importTextField.placeholderString == nil || importTextField.placeholderString?.count == 0 {
             showMessage(message: "请选择导入路径")
             return
+        }
+        
+        if customRegularButton.state == .on {
+            guard customRegularTextField.stringValue.count > 0 else {
+                showMessage(message: "请输入自定义匹配规则")
+                return
+            }
+        }
+        
+        if prefixAndSuffixRegularButton.state == .on {
+            guard prefixTextField.stringValue.count > 0 else {
+                showMessage(message: "请输入匹配前缀")
+                return
+            }
+            
+            guard suffixTextField.stringValue.count > 0 else {
+                showMessage(message: "请输入匹配后缀")
+                return
+            }
         }
         
         if exportTextField.placeholderString == nil || exportTextField.placeholderString?.count == 0 {
@@ -214,7 +285,11 @@ class ViewController: NSViewController {
             /// 自定义匹配规则
             var customRegular = ""
             DispatchQueue.main.sync {
-                customRegular = customRegularTextField.stringValue
+                if customRegularButton.state == .on {
+                    customRegular = customRegularTextField.stringValue
+                } else if prefixAndSuffixRegularButton.state == .on {
+                    customRegular = "(?<=\(prefixTextField.stringValue)).*?(?=\(suffixTextField.stringValue))"
+                }
             }
             if customRegular.count > 0  {
                 regular = try? NSRegularExpression(pattern: customRegular, options: .caseInsensitive)
