@@ -54,6 +54,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var removeOneFileExistKeyButton: NSButton!
     @IBOutlet weak var oneFileStringsView: NSView!
     @IBOutlet weak var showMessageLabel: NSTextField!
+    @IBOutlet weak var formatInputButton: NSButton!
     
     
     override func viewDidLoad() {
@@ -110,6 +111,9 @@ class ViewController: NSViewController {
             customRegularView.isHidden = true
             prefixAndSuffixView.isHidden = false
         }
+    }
+    
+    @IBAction func formatInputButtonAction(_ sender: NSButton) {
     }
     
     @IBAction func removeAllFileExistKey(_ sender: NSButton) {
@@ -339,7 +343,7 @@ class ViewController: NSViewController {
                             removeExistKeysAddedFileName = true
                             removeExistKeys = removeExistKeys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
                         }
-                        removeExistKeys = removeExistKeys + "\"" +  key + "\" = \"\";" + "\n"
+                        removeExistKeys = connectStr(removeExistKeys, keyStr: key)
                         removedExistKeysArray.append(key)
                     }
                 }
@@ -348,7 +352,7 @@ class ViewController: NSViewController {
                         keysAddedFileName = true
                         keys = keys + "\n" + "/*" + "\n" + "\(file.components(separatedBy: "/").last ?? "")" + "\n" + "*/" + "\n"
                     }
-                    keys = keys + "\"" +  key + "\" = \"\";" + "\n"
+                    keys = connectStr(keys, keyStr: key)
                     keyCount += 1
                     allKeysArray.append(key)
                 }
@@ -395,6 +399,23 @@ class ViewController: NSViewController {
             fileManager.createFile(atPath: filePath, contents: nil, attributes: nil)
         }
         return filePath
+    }
+    
+    /// 连接查询到的key
+    ///
+    /// - Parameters:
+    ///   - fileStr: 文件文本
+    ///   - keyStr: key
+    /// - Returns: 拼接后的文本
+    fileprivate func connectStr(_ fileStr: String, keyStr: String) -> String {
+        var isFormat = false
+        DispatchQueue.main.sync {
+            isFormat = formatInputButton.state == .on
+        }
+        if isFormat {
+            return fileStr + "\"" +  keyStr + "\" = \"\";" + "\n"
+        }
+        return fileStr + keyStr + "\n"
     }
 }
 

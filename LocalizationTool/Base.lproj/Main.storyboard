@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -687,7 +687,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="国际化工具" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -709,14 +709,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LocalizationTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="632" height="570"/>
+                        <rect key="frame" x="0.0" y="0.0" width="632" height="614"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCe-F6-kJL">
-                                <rect key="frame" x="16" y="70" width="600" height="484"/>
+                                <rect key="frame" x="16" y="70" width="600" height="528"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="f5e-nO-pC0">
-                                        <rect key="frame" x="0.0" y="440" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="484" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVp-a9-gTF">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -757,10 +757,10 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ulc-JS-BMx">
-                                        <rect key="frame" x="0.0" y="396" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="440" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HpB-hx-Wxw">
-                                                <rect key="frame" x="120.5" y="13" width="102" height="18"/>
+                                                <rect key="frame" x="120" y="13" width="102" height="18"/>
                                                 <buttonCell key="cell" type="check" title="使用默认规则" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IBA-96-xzK">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -770,7 +770,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wse-eI-C6U">
-                                                <rect key="frame" x="242.5" y="13" width="115" height="18"/>
+                                                <rect key="frame" x="242" y="13" width="115" height="18"/>
                                                 <buttonCell key="cell" type="check" title="自定义匹配规则" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qFF-8J-ALi">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -780,7 +780,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RYX-Ww-2Rh">
-                                                <rect key="frame" x="377.5" y="13" width="138" height="18"/>
+                                                <rect key="frame" x="377" y="13" width="138" height="18"/>
                                                 <buttonCell key="cell" type="check" title="输入前缀&amp;后缀匹配" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5Ha-tO-YVO">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -801,7 +801,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="2lV-iX-d0i">
-                                        <rect key="frame" x="0.0" y="352" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="396" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTQ-uN-lhr">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -839,7 +839,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hwu-MV-gAg">
-                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-vB-9vt">
                                                 <rect key="frame" x="-2" y="13" width="35" height="17"/>
@@ -858,7 +858,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z44-39-2hz">
-                                                <rect key="frame" x="355" y="10.5" width="237" height="22"/>
+                                                <rect key="frame" x="355" y="10" width="237" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="cQB-gZ-Xup">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -889,7 +889,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="tjh-bA-NOs">
-                                        <rect key="frame" x="0.0" y="264" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-d9-pgM">
                                                 <rect key="frame" x="125" y="13" width="349" height="18"/>
@@ -909,7 +909,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="aeg-Sh-tgp">
-                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="264" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3PX-3T-Z4G">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -947,7 +947,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Jz-G7q">
-                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Dy-sB-lFs">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -988,7 +988,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="KVD-H2-dh0">
-                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pug-aN-glN">
                                                 <rect key="frame" x="314" y="13" width="219" height="18"/>
@@ -1020,7 +1020,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sKb-I1-Int">
-                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-kU-Y7I">
                                                 <rect key="frame" x="-2" y="5" width="65" height="34"/>
@@ -1063,7 +1063,7 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="qrf-nX-8aL">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvW-fd-Ln8">
                                                 <rect key="frame" x="-2" y="13" width="61" height="17"/>
@@ -1101,6 +1101,26 @@
                                             <constraint firstItem="Bsc-za-sV7" firstAttribute="leading" secondItem="jvW-fd-Ln8" secondAttribute="trailing" constant="8" id="rcp-kw-T9n"/>
                                             <constraint firstItem="jvW-fd-Ln8" firstAttribute="leading" secondItem="qrf-nX-8aL" secondAttribute="leading" id="v1z-nr-9fI"/>
                                             <constraint firstItem="Bsc-za-sV7" firstAttribute="centerY" secondItem="jvW-fd-Ln8" secondAttribute="centerY" id="vUr-P5-qnY"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Qh2-K9-bqq">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IRK-nf-FjA">
+                                                <rect key="frame" x="229" y="13" width="142" height="18"/>
+                                                <buttonCell key="cell" type="check" title="输出文件是否带格式" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dyY-Zy-Qxn">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="formatInputButtonAction:" target="XfG-lQ-9wD" id="OQJ-58-Nwv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="IRK-nf-FjA" firstAttribute="centerX" secondItem="Qh2-K9-bqq" secondAttribute="centerX" id="Kfd-eE-Csb"/>
+                                            <constraint firstItem="IRK-nf-FjA" firstAttribute="centerY" secondItem="Qh2-K9-bqq" secondAttribute="centerY" id="hlx-fS-DCj"/>
+                                            <constraint firstAttribute="height" constant="44" id="mLd-Cu-eqm"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="lPd-Nj-Khe">
@@ -1142,8 +1162,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -1185,6 +1207,7 @@
                         <outlet property="defaultRegularButton" destination="HpB-hx-Wxw" id="4hP-SW-t7C"/>
                         <outlet property="exportButton" destination="pmX-tn-Auu" id="kRu-sx-eK6"/>
                         <outlet property="exportTextField" destination="QGG-Cv-MMY" id="Dm8-fp-1cN"/>
+                        <outlet property="formatInputButton" destination="IRK-nf-FjA" id="8cn-nk-hPc"/>
                         <outlet property="importButton" destination="MS0-I9-EL9" id="AWU-rm-awW"/>
                         <outlet property="importTextField" destination="BLO-2R-9yx" id="U3j-bb-TL9"/>
                         <outlet property="oneFileStringsView" destination="sKb-I1-Int" id="4v8-BZ-jBH"/>
